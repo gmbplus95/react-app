@@ -2,8 +2,19 @@ import React from 'react';
 import './App.css';
 import TopCountry from './components/topcountry/TopCountry';
 import WorldWide from "./components/summary/WorldWide";
+import Viet from "./components/mycountry/Viet";
+
+import Error from "./components/error/Error";
 import http from "axios";
 import FadeLoader from "react-spinners/FadeLoader";
+import Navbar from "./components/navbar/navbar";
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -45,16 +56,32 @@ class App extends React.Component {
       </div>
       )
     }
-    return <div className="App">
-      <div id="wrapper">
-        <div id="part-one">
-          <TopCountry isLoading={this.state.isLoading} corona_data={this.state.corona_data} />
-        </div>
-        <div id="part-two">
-          <WorldWide isLoading={this.state.isLoading} corona_data={this.state.corona_data}/>
-        </div>
-      </div>
-    </div>;
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/(|world)" render={props =>
+            <div className="App">
+              <Navbar/>
+              <div id="wrapper">
+                <div id="part-one">
+                  <TopCountry isLoading={this.state.isLoading} corona_data={this.state.corona_data}/>
+                </div>
+                <div id="part-two">
+                  <WorldWide isLoading={this.state.isLoading} corona_data={this.state.corona_data}/>
+                </div>
+              </div>
+            </div>
+          }/>
+          <Route path="/vietnam" render={props =>
+            <div className="App">
+              <Navbar/>
+              <Viet data={this.state.corona_data}/>
+            </div>
+          }/>
+          <Route path="*" component={Error}/>
+        </Switch>
+      </Router>
+    );
   }
 }
 

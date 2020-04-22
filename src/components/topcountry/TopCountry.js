@@ -19,7 +19,6 @@ class TopCountry extends React.Component{
     let top_10;
     if(filter_data && filter_data.length >= 10){
       top_10 = filter_data.slice(0, 10);
-      console.log(top_10);
       let country_labels= [];
       let data_infected = [];
       top_10.forEach(t => {
@@ -43,11 +42,11 @@ class TopCountry extends React.Component{
               'rgba(255, 206, 86, 0.2)',
               'rgba(75, 192, 192, 0.2)',
               'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 1)',
-              'rgb(9,56,113)',
-              'rgb(50,203,83)',
-              'rgb(231,121,95)',
-              'rgb(239,89,207)'
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(9,56,113, 0.2)',
+              'rgba(50,203,83, 0.2)',
+              'rgba(231,121,95, 0.2)',
+              'rgba(239,89,207, 0.2)'
             ],
             borderColor: [
               'rgba(255, 99, 132, 1)',

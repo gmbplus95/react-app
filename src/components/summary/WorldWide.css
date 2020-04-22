@@ -6,6 +6,18 @@
     color: red;
 }
 
+.green-text {
+    color: green;
+}
+
+.blue-text {
+    color: blue;
+}
+
 .margin-top__100 {
     margin-top: 100px;
+}
+
+.corona-img {
+    display: inline-block;
 }
